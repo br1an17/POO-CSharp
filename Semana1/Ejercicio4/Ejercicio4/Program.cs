@@ -38,7 +38,7 @@ namespace Ejercicio4
                         textoSuma = textoSuma + digito;
                     }
                 }
-                Console.WriteLine(textoSuma + " = " + suma);
+                Console.WriteLine($"La suma de los dijitos {textoSuma} es = {suma}");
             }
             else
             {
