@@ -3,6 +3,7 @@
 //puede ser un número de dos dígitos como un número de 6 dígitos.
 //Tomá la codificación anterior e introducí los cambios que sean necesarios.
 
+using system;
 
 namespace Ejercicio5
 {
