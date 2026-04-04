@@ -3,6 +3,8 @@
 //total aportado y qué porcentaje aportó cada una (indicando nombre y porcentaje).
 //Para ello, solicitar la carga por teclado del nombre de cada socio,
 //su capital aportado y a partir de esto calcular e informar lo requerido previamente .
+using System;
+
 namespace Ejercicio6
 {
     internal class Program
