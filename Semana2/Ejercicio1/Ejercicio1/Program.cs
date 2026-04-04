@@ -59,15 +59,15 @@ namespace Ejercicio1
             }
             if (miPoder > rivalPoder)
                 {
-                    return "Victoria";
+                    return "TRIUNFO";
                 }
                 else if (rivalPoder > miPoder)
                 {
-                    return "Derrota";
+                    return "DERROTA";
                 }
                 else
                 {
-                    return "Empate";
+                    return "EMPATE";
                 }
 
 
@@ -93,7 +93,7 @@ namespace Ejercicio1
 
             Console.WriteLine($"El resultado del combate es: {resultado}");
 
-            Console.WriteLine("¡Es el turno de Superman! Elegí tu atributo de ataque:");
+            Console.WriteLine("\n¡Es el turno de Superman! Elegí tu atributo de ataque:");
             Console.WriteLine("1 - Fuerza");
             Console.WriteLine("2 - Resistencia");
             Console.WriteLine("3 - Superpoderes");
