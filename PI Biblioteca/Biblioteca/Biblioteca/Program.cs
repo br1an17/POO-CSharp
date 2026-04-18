@@ -12,46 +12,66 @@
 //(cuando el lector ya posee tres libros en préstamo).
 //"LECTOR INEXISTENTE"(cuando el lector no es se encuentra registrado
 //dentro de la colección de lectores en la biblioteca).
-//Generar un video grupal de 10 minutos máximo,
-//con cámaras activas, donde cada integrante explique parte del desarrollo
-//y funcionamiento del proyecto. Por cuestiones de espacio en la plataforma,
-//pueden enviar un link al video, como recomendación pueden subirlo a Youtube,
-//sino puede ser un enlace a Drive, pero cerciórense de asignar el permiso de
-//visualización correspondiente y no deben borrarlo hasta tener aprobada la materia.
-//No dejen para entregar a último momento porque la plataforma puede fallar,
-//se aconseja enviarlo un día antes como mínimo.
+
+
+using System.Collections.Generic;
+using System;
+using ProgramaBiblioteca;
+
 
 using System;
-using System.Collections.Generic;
 
-namespace Biblioteca;
-
-public class Libro
+namespace ProgramaBiblioteca
 {
-    public string Titulo { get; set; }
-    public string Autor { get; set; }
-    public string Editorial { get; set; }
-
-    public Libro(string titulo, string autor, string editorial)
+    class Program
     {
-        this.Titulo = titulo;
-        this.Autor = autor;
-        this.Editorial = editorial;
+        static void Main(string[] args)
+        {
+        
+            Biblioteca miBiblioteca = new Biblioteca();
+
+            miBiblioteca.AgregarLibro("El Aleph", "Jorge Luis Borges", "Debolsillo");
+            miBiblioteca.AgregarLibro("Cien años de soledad", "Gabriel García Márquez", "Sudamericana");
+            miBiblioteca.AgregarLibro("C# Moderno", "Microsoft Press", "Tecno");
+            miBiblioteca.AgregarLibro("Clean Code", "Robert C. Martin", "Prentice Hall");
+
+            Console.WriteLine("--- Libros en la biblioteca inicial ---");
+            miBiblioteca.ListarLibros();
+
+       
+            miBiblioteca.AltaLector("Brian Paez", 12345678);
+
+            Console.WriteLine("\n--- Probando Préstamos ---");
+
+
+            string res1 = miBiblioteca.PrestarLibro("El Aleph", 12345678);
+            Console.WriteLine($"Intento 1 (El Aleph): {res1}");
+
+           
+            string res2 = miBiblioteca.PrestarLibro("Harry Potter", 12345678);
+            Console.WriteLine($"Intento 2 (Harry Potter): {res2}");
+
+          
+            string res3 = miBiblioteca.PrestarLibro("C# Moderno", 99999999);
+            Console.WriteLine($"Intento 3 (DNI falso): {res3}");
+
+          
+            miBiblioteca.PrestarLibro("Cien años de soledad", 12345678);
+            miBiblioteca.PrestarLibro("C# Moderno", 12345678);
+
+            string res4 = miBiblioteca.PrestarLibro("Clean Code", 12345678);
+            Console.WriteLine($"Intento 4 (Cuarto libro): {res4}");
+
+            Console.WriteLine("\n--- Estado Final de Libros en Biblioteca ---");
+            miBiblioteca.ListarLibros();
+
+            Console.WriteLine("\nPresione cualquier tecla para finalizar...");
+            Console.ReadKey();
+        }
     }
 }
-public class Lector
-{
-    public string Nombre { get; set; }
-    public int Dni { get; set; }
-    public List<Libro> LibrosPrestados { get; set; }
 
-    public Lector(string nombre, int dni)
-    {
-        Nombre = nombre;
-        Dni = dni;
-        LibrosPrestados = [];
-    }
-}
+
 
 
 
