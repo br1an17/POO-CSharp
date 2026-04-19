@@ -28,14 +28,99 @@ namespace ProgramaBiblioteca
         static void Main(string[] args)
         {
         
-            Biblioteca miBiblioteca = new Biblioteca();
+            Biblioteca miBiblioteca = new ();
 
             miBiblioteca.AgregarLibro("El Aleph", "Jorge Luis Borges", "Debolsillo");
             miBiblioteca.AgregarLibro("Cien años de soledad", "Gabriel García Márquez", "Sudamericana");
             miBiblioteca.AgregarLibro("C# Moderno", "Microsoft Press", "Tecno");
             miBiblioteca.AgregarLibro("Clean Code", "Robert C. Martin", "Prentice Hall");
 
-            Console.WriteLine("--- Libros en la biblioteca inicial ---");
+
+
+            static void MenuLector(Biblioteca miBiblioteca)
+            {
+                Console.WriteLine("=== MODO LECTOR ===");
+
+                Console.Write("Ingrese su DNI: ");
+                int dni = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("1 - Ver libros");
+                Console.WriteLine("2 - Pedir préstamo");
+
+                string opcion = Console.ReadLine();
+
+                if (opcion == "1")
+                {
+                    Console.WriteLine("--- Libros en la biblioteca ---");
+                    miBiblioteca.ListarLibros();
+                }
+                else if (opcion == "2")
+                {
+                    Console.Write("Título del libro: ");
+                    string titulo = Console.ReadLine();
+
+                    string resultado = miBiblioteca.PrestarLibro(titulo, dni);
+                    Console.WriteLine(resultado);
+                }
+            }
+            static void MenuBibliotecario(Biblioteca miBiblioteca)
+            {
+                Console.WriteLine("=== MODO BIBLIOTECARIO ===");
+
+                Console.WriteLine("1 - Agregar libro");
+                Console.WriteLine("2 - Eliminar libro");
+               
+
+                string opcion = Console.ReadLine();
+
+                if (opcion == "1")
+                {
+                    Console.Write("Título: ");
+                    string titulo = Console.ReadLine();
+
+                    Console.Write("Autor: ");
+                    string autor = Console.ReadLine();
+
+                    Console.Write("Editorial: ");
+                    string editorial = Console.ReadLine();
+
+                    bool ok = miBiblioteca.AgregarLibro(titulo, autor, editorial);
+
+                    Console.WriteLine(ok ? "Libro agregado" : "El libro ya existe");
+                }
+                else if (opcion == "2")
+                {
+                    Console.Write("Título a eliminar: ");
+                    string titulo = Console.ReadLine();
+
+                    bool ok = miBiblioteca.EliminarLibro(titulo);
+
+                    Console.WriteLine(ok ? "Libro eliminado" : "No existe el libro");
+                }
+            }
+
+            Console.WriteLine("=== SISTEMA BIBLIOTECA ===");
+            Console.WriteLine("1 - Lector");
+            Console.WriteLine("2 - Bibliotecario");
+
+            string opcion = Console.ReadLine();
+
+            if (opcion == "1")
+            {
+                MenuLector(miBiblioteca);
+            }
+            else if (opcion == "2")
+            {
+                MenuBibliotecario(miBiblioteca);
+            }
+            else
+            {
+                Console.WriteLine("Opción inválida");
+            }
+
+
+
+            Console.WriteLine("--- Libros en la biblioteca ---");
             miBiblioteca.ListarLibros();
 
        

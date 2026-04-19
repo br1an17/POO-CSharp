@@ -80,7 +80,7 @@ namespace ProgramaBiblioteca
         }
         public string PrestarLibro(string titulo, int dni)
         {
-            
+
             Lector? lector = BuscarLector(dni);
             if (lector == null)
             {
@@ -90,7 +90,7 @@ namespace ProgramaBiblioteca
             {
                 return "TOPE DE PRESTAMOS ALCANZADO";
             }
-        
+
             Libro? libro = BuscarLibro(titulo);
             if (libro == null)
             {
@@ -102,5 +102,7 @@ namespace ProgramaBiblioteca
             return "PRESTAMO EXITOSO";
 
         }
+
+    
     }
 }

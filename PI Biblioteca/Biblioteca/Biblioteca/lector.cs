@@ -14,7 +14,7 @@ namespace ProgramaBiblioteca
         public List<Libro> LibrosPrestados { get; set; } = [];
         public int GetDni()
         {
-            return dni;
+            return Dni;
         }
         public List<Libro> GetPrestamos()
         {
@@ -23,7 +23,7 @@ namespace ProgramaBiblioteca
 
         public override string ToString()
         {
-            return "DNI: " + dni + " Nombre: " + nombre;
+            return "DNI: " + Dni + " Nombre: " + Nombre;
         }
     }
 }
